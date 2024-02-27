@@ -1,23 +1,22 @@
 // AddressBookApplication.java
 package address;
 
-import address.AddressBook;
-import address.AddressEntry;
 
+/**
+    Initializes the Address Book and starts the menu display
+    @author Juan Sanchez
+     */
 public class AddressBookApplication {
+    private static final AddressBook addressBook = new AddressBook();
 
-    public static void main(String[] args) {
-        AddressBook ab = new AddressBook();
-        initAddressBookExercise(ab);
-    }
-
-    public static void initAddressBookExercise(AddressBook ab) {
-        AddressEntry entry1 = new AddressEntry("Aaron Yu", "1569 Mission St", "(800)-482-1234", "ay159@yahoo.com");
-        AddressEntry entry2 = new AddressEntry("Alex Lopez", "55554 Turkey Blvd", "(555)-999-5678", "al321@gmail.com");
-
-        ab.addAddressEntry(entry1);
-        ab.addAddressEntry(entry2);
-
-        ab.list();
+    /**
+    Starts the menu display
+    @author Juan Sanchez
+    @param arguments String command line
+     @since 2023.3.4
+     */
+    public static void main(String[] arguments){
+        Menu menu = new Menu(addressBook);
+        menu.displayMenu();
     }
 }
