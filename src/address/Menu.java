@@ -3,6 +3,7 @@ package address;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -138,10 +139,19 @@ public class Menu {
   */
     private void removeEntry() {
         System.out.println("Removing an entry:");
-        // Implement removal of an entry
         System.out.print("Enter the last name of the entry you want to remove: ");
         String lastName = scanner.nextLine();
-        addressBook.removeEntry(lastName);
+
+        List<AddressEntry> entriesToRemove = addressBook.findEntries(lastName);
+        if (entriesToRemove.isEmpty()) {
+            System.out.println("No entries found with the last name: " + lastName);
+        } else if (entriesToRemove.size() == 1) {
+            addressBook.removeEntry(entriesToRemove.get(0));
+            System.out.println("Entry removed successfully!");
+        } else {
+            System.out.println("Multiple entries found with the last name: " + lastName);
+            System.out.println("Please refine your search.");
+        }
     }
 
     /**
