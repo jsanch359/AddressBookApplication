@@ -38,7 +38,7 @@ public class AddressBook {
     @param  entry input, more specifically entries last name section
      @since 2023.3.4
      */
-    public void removeEntry(String entry) {
+    public void removeEntry(AddressEntry entry) {
         entries.remove(entry);
     }
 
